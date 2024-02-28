@@ -27,7 +27,6 @@ library(knitr)
 
 ```
 
-
 ## Data source
 
 Response here.
@@ -36,19 +35,26 @@ Response here.
 
 ```{r}
 #| label: tbl-read-data
+#| tbl-cap: Sample of first five observations from NCHS Leading Causes of Death database
+#| tbl-cap-location: bottom
 
 # read in data
 death_causes <- read_csv(here("data/leading_causes_of_death.csv")) |> 
   janitor::clean_names()
 
+# build table
 death_causes |> 
   slice_head(n = 5) |> 
-  kable()
+  kable(align = "c")
 
 ```
 
+@tbl-read-data shows the first five observations from the dataset to demonstrate that it was succesfully read in. We see that there are six columns. The key columns we are interested in visualizing are `year`, `cause_name`, `state`, and `age_adjusted_death_rate`. 
+
 ```{r}
 #| label: tbl-skim-data
+#| tbl-cap: Skim of NCHS leading causes of death data
+#| tbl-cap-location: top
 
 # skim without charts
 death_causes |> 
@@ -56,6 +62,7 @@ death_causes |>
 
 ```
 
+In @tbl-skim-data, we get an overview of the dataset. There are 10,868 observations with six variables, as noted above. There are three character variables: `x113_cause_name`, `cause_name`, and `state`. There are three numeric variables: `year`, `deaths`, and `age_adjusted_death_rate`. There is no missingness in the dataset. I will also use spatial data from the `maps` package to map the leading causes of death. 
 
 ## Why this data
 
