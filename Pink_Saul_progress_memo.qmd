@@ -1,0 +1,71 @@
+---
+title: "Progress Memo"
+subtitle: |
+  | Final Project 
+  | Data Visualization (STAT 302)
+author: "Saul Pink"
+date: today
+
+format:
+  html:
+    toc: true
+    embed-resources: true
+    
+execute:
+  echo: false
+  warning: false
+---
+
+```{r}
+#| label: load-pckgs
+
+# load packages
+library(tidyverse)
+library(here)
+library(skimr)
+library(knitr)
+
+```
+
+
+## Data source
+
+Response here.
+
+## Basic data description
+
+```{r}
+#| label: tbl-read-data
+
+# read in data
+death_causes <- read_csv(here("data/leading_causes_of_death.csv")) |> 
+  janitor::clean_names()
+
+death_causes |> 
+  slice_head(n = 5) |> 
+  kable()
+
+```
+
+```{r}
+#| label: tbl-skim-data
+
+# skim without charts
+death_causes |> 
+  skim_without_charts()
+
+```
+
+
+## Why this data
+
+Response here.
+
+## Visualization plan
+
+Response here.
+
+## Misc.
+
+Response here.
+
