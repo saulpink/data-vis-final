@@ -14,7 +14,7 @@ death_causes <- read_csv(here("data/leading_causes_of_death.csv")) |>
 ## skim ----
 skim_without_charts(death_causes)
 
-## test ---
+## test if I can make a map ---
 us_states_map <- st_as_sf(maps::map("state", plot = FALSE, fill = TRUE))
 
 # Convert state names to match your dataset
@@ -34,12 +34,3 @@ death_causes_map |>
        fill = "Death Rate") +
   theme_void()
 
-# map works!
-death_causes_map |> 
-  filter(cause_name == "Suicide", year == 2000) |> 
-  ggplot() +
-  geom_sf(aes(fill = age_adjusted_death_rate), color = "white") +
-  scale_fill_viridis_c() +
-  labs(title = "Diabetes age adjusted death rate by state",
-       fill = "Death Rate") +
-  theme_void()

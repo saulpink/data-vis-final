@@ -10,6 +10,8 @@ format:
   html:
     toc: true
     embed-resources: true
+    reference-location: margin
+    citation-location: margin
     
 execute:
   echo: false
@@ -21,7 +23,6 @@ execute:
 
 # load packages
 library(tidyverse)
-library(here)
 library(skimr)
 library(knitr)
 
@@ -29,27 +30,32 @@ library(knitr)
 
 ## Data source
 
-Response here.
+I will be using the "NCHS - Leading Causes of Death: United States" [dataset](https://catalog.data.gov/dataset/nchs-leading-causes-of-death-united-states) from the U.S. Department of Health and Human Services. The dataset contains the age-adjusted death rates for the 10 leading causes of death in the United States from 1999 to 2017.[^1]
 
-## Basic data description
+[^1]: National Center for Health Statistics. (2022). *NCHS - Leading Causes of Death: United States* \[Dataset\]. Centers for Disease Control and Prevention. <https://catalog.data.gov/dataset/nchs-leading-causes-of-death-united-states>
+
+The dataset contains the death rates for each cause by state and by each year. The goal of my data visualizations will be to communicate how death rates for certain causes of deaths have changed over time and how they very between states and regions.
+
+## Data description
 
 ```{r}
 #| label: tbl-read-data
 #| tbl-cap: Sample of first five observations from NCHS Leading Causes of Death database
 #| tbl-cap-location: bottom
+#| echo: true
 
 # read in data
-death_causes <- read_csv(here("data/leading_causes_of_death.csv")) |> 
+death_causes <- read_csv(here::here("data/leading_causes_of_death.csv")) |> 
   janitor::clean_names()
 
-# build table
+# build table of first five observations to show successful reading in
 death_causes |> 
   slice_head(n = 5) |> 
   kable(align = "c")
 
 ```
 
-@tbl-read-data shows the first five observations from the dataset to demonstrate that it was succesfully read in. We see that there are six columns. The key columns we are interested in visualizing are `year`, `cause_name`, `state`, and `age_adjusted_death_rate`. 
+@tbl-read-data shows the first five observations from the dataset to demonstrate that it was succesfully read in. We see that there are six columns. The key columns we are interested in visualizing are `year`, `cause_name`, `state`, and `age_adjusted_death_rate`.
 
 ```{r}
 #| label: tbl-skim-data
@@ -62,17 +68,14 @@ death_causes |>
 
 ```
 
-In @tbl-skim-data, we get an overview of the dataset. There are 10,868 observations with six variables, as noted above. There are three character variables: `x113_cause_name`, `cause_name`, and `state`. There are three numeric variables: `year`, `deaths`, and `age_adjusted_death_rate`. There is no missingness in the dataset. I will also use spatial data from the `maps` package to map the leading causes of death. 
+In @tbl-skim-data, we get an overview of the dataset. There are 10,868 observations with six variables, as noted above. There are three character variables: `x113_cause_name`, `cause_name`, and `state`. There are three numeric variables: `year`, `deaths`, and `age_adjusted_death_rate`. There is no missingness in the dataset. I will also use spatial data from the `maps` package to map the leading causes of death by state.
 
 ## Why this data
 
-Response here.
+I chose this dataset for two main reasons. First, I'm a journalism student, and I'm extremely interested in using data visualizations to supplement reporting. In reading the news, I've noticed more and more outlets using spatial data and interactive maps to supplement stories about nationwide and local trends in health, business and more. I want to learn how to deal with spatial data and visualize it in an interactive way, so that I'm able to use these skills for my reporting in the future. This dataset seemed like a good place to start.
+
+Second, I'm very interested to see how the leading causes of death in the U.S. have changed over the years, given the plethora of changes that happened between 1999 and 2017. The causes of death often reflect other issues, like socioeconomic disparities between states, access to healthcare, and more, so I'm curious to what myself and viewers can gleam from a data visualization.
 
 ## Visualization plan
 
-Response here.
-
-## Misc.
-
-Response here.
-
+I'm aiming to create a Shiny app with a map of the United States where viewers can use the sidebar to choose which year and which cause of death they would like to see visualized. Additionally, I'd like to have a second tab with either a linegraph or a table, where users can choose a cause of death and see how it changed over the 18-year period of the dataset. Finally, I'll have a third tab where I summarize my takeaways from the data visualizations.
