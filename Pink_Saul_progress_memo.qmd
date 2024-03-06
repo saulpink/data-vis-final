@@ -70,6 +70,10 @@ death_causes |>
 
 In @tbl-skim-data, we get an overview of the dataset. There are 10,868 observations with six variables, as noted above. There are three character variables: `x113_cause_name`, `cause_name`, and `state`. There are three numeric variables: `year`, `deaths`, and `age_adjusted_death_rate`. There is no missingness in the dataset. I will also use spatial data from the `maps` package to map the leading causes of death by state.
 
+::: column-margin
+I'm using Github to version control this project. [*Repo link.*](https://github.com/saulpink/data-vis-final)
+:::
+
 ## Why this data
 
 I chose this dataset for two main reasons. First, I'm a journalism student, and I'm extremely interested in using data visualizations to supplement reporting. In reading the news, I've noticed more and more outlets using spatial data and interactive maps to supplement stories about nationwide and local trends in health, business and more. I want to learn how to deal with spatial data and visualize it in an interactive way, so that I'm able to use these skills for my reporting in the future. This dataset seemed like a good place to start.

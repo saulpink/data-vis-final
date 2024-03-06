@@ -3124,7 +3124,7 @@ Data Visualization (STAT 302)</div><p></p>
 <p>I will be using the “NCHS - Leading Causes of Death: United States” <a href="https://catalog.data.gov/dataset/nchs-leading-causes-of-death-united-states">dataset</a> from the U.S. Department of Health and Human Services. The dataset contains the age-adjusted death rates for the 10 leading causes of death in the United States from 1999 to 2017.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <div class="no-row-height column-margin column-container"><p><sup>1</sup> National Center for Health Statistics. (2022). <em>NCHS - Leading Causes of Death: United States</em> [Dataset]. Centers for Disease Control and Prevention. <a href="https://catalog.data.gov/dataset/nchs-leading-causes-of-death-united-states" class="uri">https://catalog.data.gov/dataset/nchs-leading-causes-of-death-united-states</a></p></div><p>The dataset contains the death rates for each cause by state and by each year. The goal of my data visualizations will be to communicate how death rates for certain causes of deaths have changed over time and how they very between states and regions.</p>
 </section>
-<section id="data-description" class="level2">
+<section id="data-description" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="data-description">Data description</h2>
 <div class="cell" data-tbl-cap-location="bottom">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
@@ -3389,7 +3389,10 @@ Table 2: Skim of NCHS leading causes of death data
 </div>
 </div>
 <p>In <a href="#tbl-skim-data" class="quarto-xref">Table 2</a>, we get an overview of the dataset. There are 10,868 observations with six variables, as noted above. There are three character variables: <code>x113_cause_name</code>, <code>cause_name</code>, and <code>state</code>. There are three numeric variables: <code>year</code>, <code>deaths</code>, and <code>age_adjusted_death_rate</code>. There is no missingness in the dataset. I will also use spatial data from the <code>maps</code> package to map the leading causes of death by state.</p>
-</section>
+
+<div class="no-row-height column-margin column-container"><div class>
+<p>I’m using Github to version control this project. <a href="https://github.com/saulpink/data-vis-final"><em>Repo link.</em></a></p>
+</div></div></section>
 <section id="why-this-data" class="level2">
 <h2 class="anchored" data-anchor-id="why-this-data">Why this data</h2>
 <p>I chose this dataset for two main reasons. First, I’m a journalism student, and I’m extremely interested in using data visualizations to supplement reporting. In reading the news, I’ve noticed more and more outlets using spatial data and interactive maps to supplement stories about nationwide and local trends in health, business and more. I want to learn how to deal with spatial data and visualize it in an interactive way, so that I’m able to use these skills for my reporting in the future. This dataset seemed like a good place to start.</p>
